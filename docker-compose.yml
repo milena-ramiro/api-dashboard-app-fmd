@@ -7,4 +7,4 @@ services:
       context: .
       dockerfile: src/Dashboard.Api/Dockerfile
   db:
-    image: "mcr.microsoft.com/mssql/server:2017-latest"
+    image: "mcr.microsoft.com/mssql/server:2019-latest"

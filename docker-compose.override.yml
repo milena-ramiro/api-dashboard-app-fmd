@@ -12,6 +12,10 @@ services:
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+    depends_on:
+      - db 
+    networks:
+      - api-network
   db:
     container_name: dbDashboardApp
     environment:
@@ -20,3 +24,12 @@ services:
     restart: always
     ports:
         - "1433:1433"
+    volumes:
+        - C:\MSSQL\BACKUP\KEEP:/var/opt/mssql/backups   
+    networks:
+      - api-network
+
+networks:
+  api-network:
+    driver: bridge
+  
