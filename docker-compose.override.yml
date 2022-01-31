@@ -29,7 +29,7 @@ services:
     networks:
       - api-network
 
-networks:
-  api-network:
-    driver: bridge
+  networks:
+    api-network:
+      driver: bridge
   
