@@ -12,4 +12,4 @@ git clone https://github.com/milena-ramiro/api-dashboard-app-fmd.git
 ``docker-compose up --build``
 
 ### 5º Passo: Entrar no endereço abaixo e checar se a Api está funcionando :)
-``https://localhost:44378/swagger/index.html`` 
+``http://localhost:32033/swagger/index.html`` 
