@@ -1,10 +1,22 @@
-version: '3.4'
 
+version: '3.4'
 services:
-  dashboard.api:
-    image: milenaramiro/api-dashboard-fmd
+  ApiDashboard:
+    image:  milenaramiro/api-dashboard-fmd
     build:
       context: .
       dockerfile: src/Dashboard.Api/Dockerfile
-  db:
-    image: "mcr.microsoft.com/mssql/server:2019-latest"
+    depends_on:
+      - sqlserver
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    hostname: 'sqlserver'
+    environment:
+      ACCEPT_EULA: 'Y'
+      SA_PASSWORD: "@FMD2021"
+    volumes:
+      - c:\dados\volumes\mssql:/var/opt/mssql3
+    ports:
+      - '11433:1433'
+    expose:
+      - 1433
