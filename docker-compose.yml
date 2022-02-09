@@ -1,5 +1,5 @@
-
 version: '3.4'
+
 services:
   ApiDashboard:
     image:  milenaramiro/api-dashboard-fmd
@@ -15,8 +15,11 @@ services:
       ACCEPT_EULA: 'Y'
       SA_PASSWORD: "@FMD2021"
     volumes:
-      - c:\dados\volumes\mssql:/var/opt/mssql3
+      - sqlvolume:/var/opt/mssql
     ports:
       - '11433:1433'
     expose:
       - 1433
+        
+volumes:
+  sqlvolume:
