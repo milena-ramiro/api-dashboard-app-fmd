@@ -10,6 +10,6 @@ namespace Dashboard.Business.Interfaces.Repository
 {
     public interface IEmployeeRepository : IRepository<Employee>
     {
-        Task<List<EmployeeViewModel>> GetByTeam(Guid idTeam);
+        Task<List<EmployeeViewModel>> GetByTeam(int idTeam);
     }
 }

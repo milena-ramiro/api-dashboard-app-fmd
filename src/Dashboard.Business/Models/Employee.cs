@@ -22,7 +22,7 @@ namespace Dashboard.Business.Models
         }
 
         [Column("TeamId")]
-        public Guid TeamId { get; set; }
+        public int TeamId { get; set; }
         public virtual Team Team { get; set; }
 
 

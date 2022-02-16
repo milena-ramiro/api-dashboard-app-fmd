@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Dashboard.Business.Models;
+﻿using Dashboard.Business.Models;
+using Dashboard.Data.Seed;
 using Microsoft.EntityFrameworkCore;
 
 namespace Dashboard.Data.Context
@@ -18,5 +14,10 @@ namespace Dashboard.Data.Context
         public DbSet<Team> Team { get; set; }
         public DbSet<Employee> Employee { get; set; }
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.SeedTeam();
+            modelBuilder.SeedEmployee();
+        }
     }
 }

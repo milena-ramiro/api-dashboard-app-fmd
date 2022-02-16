@@ -16,7 +16,7 @@ namespace Dashboard.Data.Repository
         {
         }
 
-        public async Task<List<EmployeeViewModel>> GetByTeam(Guid idTeam)
+        public async Task<List<EmployeeViewModel>> GetByTeam(int idTeam)
         {
             var response = await DbSet.AsNoTracking()
                 .Where(e => e.TeamId.Equals(idTeam))

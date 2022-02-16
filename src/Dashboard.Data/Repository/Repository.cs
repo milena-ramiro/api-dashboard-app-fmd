@@ -27,7 +27,7 @@ namespace Dashboard.Data.Repository
             return await DbSet.AsNoTracking().Where(predicate).ToListAsync();
         }
 
-        public virtual async Task<TEntity> GetById(Guid id)
+        public virtual async Task<TEntity> GetById(int id)
         {
             return await DbSet.FindAsync(id);
         }
@@ -49,7 +49,7 @@ namespace Dashboard.Data.Repository
             await SaveChanges();
         }
 
-        public virtual async Task Remove(Guid id)
+        public virtual async Task Remove(int id)
         {
             DbSet.Remove(new TEntity { Id = id });
             await SaveChanges();

@@ -21,7 +21,7 @@ namespace Dashboard.Api.Controllers
         
         // GET: TeamController
         [HttpGet]
-        public async Task<IActionResult> Get(Guid teamId)
+        public async Task<IActionResult> Get(int teamId)
         {
             var response = await _repository.GetByTeam(teamId);
             return CustomResponse(response);
@@ -40,7 +40,7 @@ namespace Dashboard.Api.Controllers
         
         // POST: TeamController/Delete/5
         [HttpDelete("delete")]
-        public async Task<IActionResult> Delete(Guid id)
+        public async Task<IActionResult> Delete(int id)
         {
             var employee = await _repository.GetById(id);
 

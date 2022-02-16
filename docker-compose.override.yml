@@ -3,6 +3,6 @@ version: '3.4'
 services:
   ApiDashboard:
     environment:
-      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_ENVIRONMENT=Docker
     ports:
       - "32033:80"

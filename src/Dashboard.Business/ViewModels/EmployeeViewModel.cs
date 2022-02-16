@@ -13,7 +13,7 @@ namespace Dashboard.Business.ViewModels
 
         public EmployeeCreateViewModel(Employee employee)
         {
-            TeamId = Guid.Empty;
+            TeamId = 0;
             Name = employee.Name;
             Gender = employee.Gender;
             Discord = employee.Discord;
@@ -22,7 +22,7 @@ namespace Dashboard.Business.ViewModels
         }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
-        public Guid TeamId { get; set; }
+        public int TeamId { get; set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
         public string Name { get; set; }

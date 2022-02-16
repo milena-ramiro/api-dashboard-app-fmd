@@ -21,7 +21,7 @@ namespace Dashboard.Business.ViewModels
             Theme = team.Theme;
         }
 
-        public Guid? Id { get; set; }
+        public int Id { get; set; }
         
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
         public string Title { get; set; }
