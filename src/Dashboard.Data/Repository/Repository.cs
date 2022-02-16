@@ -29,7 +29,7 @@ namespace Dashboard.Data.Repository
 
         public virtual async Task<TEntity> GetById(int id)
         {
-            return await DbSet.FindAsync(id);
+            return await DbSet.AsNoTracking().Where(x => x.Id == id).FirstOrDefaultAsync();
         }
 
         public virtual async Task<List<TEntity>> Get()
