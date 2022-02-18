@@ -40,6 +40,7 @@ public static class ApiConfig
                 });
         });
 
+        services.AddEndpointsApiExplorer();
         return services;
     }
 
