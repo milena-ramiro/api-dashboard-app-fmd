@@ -1,18 +1,19 @@
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Hosting;
+using Dashboard.Api.Configuration;
+using Dashboard.Data.Context;
+using Microsoft.EntityFrameworkCore;
 
-namespace Dashboard.Api;
+var builder = WebApplication.CreateBuilder(args);
 
-public class Program
+builder.Services.AddDbContext<AppDbContext>(options =>
 {
-    public static void Main(string[] args)
-    {
-        CreateHostBuilder(args).Build().Run();
-    }
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+});
 
-    public static IHostBuilder CreateHostBuilder(string[] args)
-    {
-        return Host.CreateDefaultBuilder(args)
-            .ConfigureWebHostDefaults(webBuilder => { webBuilder.UseStartup<Startup>(); });
-    }
-}
+builder.Services.AddApiConfig();
+builder.Services.ResolveDependencies();
+
+
+var app = builder.Build();
+app.UseApiConfig(app.Environment);
+app.MapControllers();
+app.Run();
