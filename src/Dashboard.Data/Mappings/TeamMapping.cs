@@ -7,28 +7,27 @@ using Dashboard.Business.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Dashboard.Data.Mappings
+namespace Dashboard.Data.Mappings;
+
+public class TeamMapping : IEntityTypeConfiguration<Team>
 {
-    public class TeamMapping : IEntityTypeConfiguration<Team>
+    public void Configure(EntityTypeBuilder<Team> builder)
     {
-        public void Configure(EntityTypeBuilder<Team> builder)
-        {
-            builder.HasKey(t => t.Id);
+        builder.HasKey(t => t.Id);
 
-            builder.Property(t => t.Title)
-                .IsRequired()
-                .HasColumnType("varchar(50)");
+        builder.Property(t => t.Title)
+            .IsRequired()
+            .HasColumnType("varchar(50)");
 
-            builder.Property(t => t.Description)
-                .IsRequired()
-                .HasColumnType("nvarchar");
+        builder.Property(t => t.Description)
+            .IsRequired()
+            .HasColumnType("nvarchar");
 
-            builder.Property(t => t.Theme)
-                .IsRequired()
-                .HasColumnType("varchar(50)");
+        builder.Property(t => t.Theme)
+            .IsRequired()
+            .HasColumnType("varchar(50)");
 
 
-            builder.ToTable("Team");
-        }
+        builder.ToTable("Team");
     }
 }

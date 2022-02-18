@@ -5,30 +5,29 @@ using System.Text;
 using System.Threading.Tasks;
 using Dashboard.Business.Interfaces;
 
-namespace Dashboard.Business.Notifications
+namespace Dashboard.Business.Notifications;
+
+public class Notificator : INotificator
 {
-    public class Notificator : INotificator
+    private List<Notification> _notifications;
+
+    public Notificator()
     {
-        private List<Notification> _notifications;
+        _notifications = new List<Notification>();
+    }
 
-        public Notificator()
-        {
-            _notifications = new List<Notification>();
-        }
+    public bool HasNotification()
+    {
+        return _notifications.Any();
+    }
 
-        public bool HasNotification()
-        {
-            return _notifications.Any();
-        }
+    public List<Notification> GetNotifications()
+    {
+        return _notifications;
+    }
 
-        public List<Notification> GetNotifications()
-        {
-            return _notifications;
-        }
-
-        public void Handle(Notification notification)
-        {
-            _notifications.Add(notification);
-        }
+    public void Handle(Notification notification)
+    {
+        _notifications.Add(notification);
     }
 }

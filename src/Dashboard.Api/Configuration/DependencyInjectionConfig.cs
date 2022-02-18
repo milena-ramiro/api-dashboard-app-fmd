@@ -5,17 +5,16 @@ using Dashboard.Data.Context;
 using Dashboard.Data.Repository;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Dashboard.Api.Configuration
+namespace Dashboard.Api.Configuration;
+
+public static class DependencyInjectionConfig
 {
-    public static class DependencyInjectionConfig
+    public static IServiceCollection ResolveDependencies(this IServiceCollection services)
     {
-        public static IServiceCollection ResolveDependencies(this IServiceCollection services)
-        {
-            services.AddScoped<AppDbContext>();
-            services.AddScoped<INotificator, Notificator>();
-            services.AddScoped<ITeamRepository, TeamRepository>();
-            services.AddScoped<IEmployeeRepository, EmployeeRepository>();
-            return services;
-        }
+        services.AddScoped<AppDbContext>();
+        services.AddScoped<INotificator, Notificator>();
+        services.AddScoped<ITeamRepository, TeamRepository>();
+        services.AddScoped<IEmployeeRepository, EmployeeRepository>();
+        return services;
     }
 }

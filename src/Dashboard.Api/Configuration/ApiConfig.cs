@@ -6,75 +6,71 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 
-namespace Dashboard.Api.Configuration
-{
-    public static class ApiConfig
-    {
-        public static IServiceCollection AddApiConfig(this IServiceCollection services)
-        {
-            services.AddControllers();
+namespace Dashboard.Api.Configuration;
 
-            services.AddCors(options =>
-            {
-                options.AddPolicy("Development",
-                    builder =>
-                        builder
+public static class ApiConfig
+{
+    public static IServiceCollection AddApiConfig(this IServiceCollection services)
+    {
+        services.AddControllers();
+
+        services.AddCors(options =>
+        {
+            options.AddPolicy("Development",
+                builder =>
+                    builder
                         .AllowAnyOrigin()
                         .AllowAnyMethod()
                         .AllowAnyHeader());
-            });
+        });
 
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1",
-                    new OpenApiInfo
-                    {
-                        Title = "Projeto Dashboard APP",
-                        Version = "v1",
-                        Description = "API RESTful developed by Milena",
-                        Contact = new OpenApiContact
-                        {
-                            Name = "Milena Ramiro",
-                            Url = new Uri("https://github.com/milena-ramiro")
-                        }
-                    });
-            });
-
-            return services;
-        }
-
-        public static IApplicationBuilder UseApiConfig(this IApplicationBuilder app, IWebHostEnvironment env)
+        services.AddSwaggerGen(c =>
         {
-            if (env.IsDevelopment())
-            {
-                app.UseCors("Development");
-                app.UseDeveloperExceptionPage();
-            }
-            else
-            {
-                app.UseCors("Development"); // Usar apenas nas demos => Configuração Ideal: Production
-                app.UseHsts();
-            }
+            c.SwaggerDoc("v1",
+                new OpenApiInfo
+                {
+                    Title = "Projeto Dashboard APP",
+                    Version = "v1",
+                    Description = "API RESTful developed by Milena",
+                    Contact = new OpenApiContact
+                    {
+                        Name = "Milena Ramiro",
+                        Url = new Uri("https://github.com/milena-ramiro")
+                    }
+                });
+        });
 
-            app.UseHttpsRedirection();
+        return services;
+    }
 
-            app.UseStaticFiles();
-
-            app.UseRouting();
-
-            app.UseAuthentication();
-            app.UseAuthorization();
-
-            app.UseSwagger();
-            app.UseSwaggerUI(c =>
-            {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "API Dashboard APP");
-            });
-
-
-            app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
-
-            return app;
+    public static IApplicationBuilder UseApiConfig(this IApplicationBuilder app, IWebHostEnvironment env)
+    {
+        if (env.IsDevelopment())
+        {
+            app.UseCors("Development");
+            app.UseDeveloperExceptionPage();
         }
+        else
+        {
+            app.UseCors("Development"); // Usar apenas nas demos => Configuração Ideal: Production
+            app.UseHsts();
+        }
+
+        app.UseHttpsRedirection();
+
+        app.UseStaticFiles();
+
+        app.UseRouting();
+
+        app.UseAuthentication();
+        app.UseAuthorization();
+
+        app.UseSwagger();
+        app.UseSwaggerUI(c => { c.SwaggerEndpoint("/swagger/v1/swagger.json", "API Dashboard APP"); });
+
+
+        app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
+
+        return app;
     }
 }

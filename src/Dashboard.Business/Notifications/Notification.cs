@@ -4,15 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Dashboard.Business.Notifications
-{
-    public class Notification
-    {
-        public Notification(string msg)
-        {
-            Message = msg;
-        }
+namespace Dashboard.Business.Notifications;
 
-        public string Message { get; }
+public class Notification
+{
+    public Notification(string msg)
+    {
+        Message = msg;
     }
+
+    public string Message { get; }
 }

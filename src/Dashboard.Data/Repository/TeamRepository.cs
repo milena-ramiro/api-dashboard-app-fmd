@@ -5,19 +5,18 @@ using Dashboard.Business.Models;
 using Dashboard.Data.Context;
 using Microsoft.EntityFrameworkCore;
 
-namespace Dashboard.Data.Repository
-{
-    public class TeamRepository : Repository<Team>, ITeamRepository
-    {
-        public TeamRepository(AppDbContext db) : base(db)
-        {
-        }
+namespace Dashboard.Data.Repository;
 
-        public override async Task<List<Team>> Get()
-        {
-            return await base.DbSet
-                .AsNoTracking()
-                .ToListAsync();
-        }
+public class TeamRepository : Repository<Team>, ITeamRepository
+{
+    public TeamRepository(AppDbContext db) : base(db)
+    {
+    }
+
+    public override async Task<List<Team>> Get()
+    {
+        return await DbSet
+            .AsNoTracking()
+            .ToListAsync();
     }
 }

@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 using Dashboard.Business.Models;
 using Dashboard.Business.ViewModels;
 
-namespace Dashboard.Business.Interfaces.Repository
+namespace Dashboard.Business.Interfaces.Repository;
+
+public interface IEmployeeRepository : IRepository<Employee>
 {
-    public interface IEmployeeRepository : IRepository<Employee>
-    {
-        Task<List<EmployeeViewModel>> GetByTeam(int idTeam);
-    }
+    Task<List<EmployeeViewModel>> GetByTeam(int idTeam);
 }
