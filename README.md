@@ -13,3 +13,6 @@ git clone https://github.com/milena-ramiro/api-dashboard-app-fmd.git
 
 ### 5º Passo: Entrar no endereço abaixo e checar se a Api está funcionando :)
 ``http://localhost:32033/swagger/index.html`` 
+
+# Update
+### API atualizada com a versão 6 do .NET e C# 10 na branch dotnet-6
